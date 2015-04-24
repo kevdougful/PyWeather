@@ -193,3 +193,4 @@ ModelManifest.xml
 
 # ignore private API key file
 *.key
+*.pyc

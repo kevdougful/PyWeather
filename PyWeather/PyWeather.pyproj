@@ -29,9 +29,6 @@
   <ItemGroup>
     <Folder Include="Server\" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Server\api.key" />
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
