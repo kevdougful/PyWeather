@@ -1,3 +1,10 @@
+'''
+getxml.py
+
+This module handles forming an HTTP request and sending it to
+the Wunderground API.  The parsed response is returned.
+'''
+
 from urllib import request
 from xml.dom import minidom
 
