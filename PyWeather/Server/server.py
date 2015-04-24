@@ -1,4 +1,4 @@
-import getjson
+import getxml
 
-cast_json = getjson.api_request('forecast', 'MO/Maryland_Heights')
-print(cast_json)
+forecast_xml = getxml.xml_request('forecast', 'MO/Maryland_Heights')
+print(forecast_xml)

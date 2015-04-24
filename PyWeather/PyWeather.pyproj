@@ -5,8 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>c246e216-743e-48a6-b22a-a9c0867b2816</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>Server\server.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +23,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Server\getjson.py" />
+    <Compile Include="Server\getxml.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Server\server.py" />
   </ItemGroup>
   <ItemGroup>
