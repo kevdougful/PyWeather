@@ -2,11 +2,11 @@
 getxml.py
 
 This module handles forming an HTTP request and sending it to
-the Wunderground API.  The parsed response is returned.
+the Wunderground API.  The parsed XML response is returned.
 '''
 
 from urllib import request
-from xml.dom import minidom
+from xml.dom.minidom import parseString
 
 # get the api key
 def _get_apikey():
@@ -27,4 +27,5 @@ def xml_request(type, location):
     req = request.urlopen(url)
     # read response
     res = req.read()
-    return minidom.parseString(res)
+    # return parsed XML
+    return parseString(res)
