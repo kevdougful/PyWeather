@@ -1,4 +1,7 @@
 import getxml
 from forecastdata import Forecast
 
-somedate = Forecast('MO/Maryland_Heights')
+cast = Forecast('MO/Maryland_Heights')
+for day in cast.ForecastDays:
+    print(str(day))
+    print(day.date.strftime('%A'))
