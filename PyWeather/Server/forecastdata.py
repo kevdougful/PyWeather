@@ -17,7 +17,7 @@ class Forecast(object):
         self.simpleforecast = _getelements(self.xml, 'simpleforecast')
         #days = self.txt_forecast[0].childNodes[1].getElementsByTagName('forecastday')
         #print(len(days))
-        days = self.xml.getElementsByTagName('forecastdays')
+        days = self.xml.getElementsByTagName('forecastday')
         print(days[0].toprettyxml())
         #print(len(days))
         #for item in self.txt_forecast[0].childNodes:
