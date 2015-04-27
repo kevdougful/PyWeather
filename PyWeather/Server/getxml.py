@@ -8,19 +8,26 @@ the Wunderground API.  The parsed XML response is returned.
 from urllib import request
 from xml.dom.minidom import parseString
 
-# get the api key
 def _get_apikey():
+    '''
+    gets Wunderground API from api.key file.
+    api.key file must be in same directory.
+    '''
     return open('./api.key').read()
 
-# construct a request URL
 def _get_url(type, location):
-    # build up URL
+    '''
+    returns an HTTP URL for the desired location and type of request.
+    '''
     url = 'http://api.wunderground.com/api/'
     url += _get_apikey() + '/' + type + '/q/' + location + '.xml'
     return url
 
-# send API HTTP request
 def xml_request(type, location):
+    '''
+    makes an HTTP request for desired location and type of request.
+    returns the response as parsed XML.
+    '''
     # get URL
     url = _get_url(type, location)
     # send HTTP request
