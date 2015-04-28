@@ -8,10 +8,7 @@ This module contains class implementations of API responses.
 This class is responsible for forming and sending the HTTP request.  It then does a higher-order parse on the XML response, creating a list of ForecastDay objects.  
 The \_\_init\_\_() method for the Forecast class takes one argument for the location for which the forecast should be requested.  This argument is a string in the form:
     
-    <State>/<City>
-or
-
-    <Zip Code>
+`<State>/<City>` or `<Zip Code>`
 
 ###ForecastDay
 This class encapsulates all forecast data returned by the API for a particular day.
