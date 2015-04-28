@@ -54,20 +54,21 @@ class ForecastDay(object):
     def __init__(self, day, night, simple):
         # set the date
         epoch = simple.getElementsByTagName('epoch')[0].firstChild.nodeValue
-        #epoch = _getNodeValue(simple, 'epoch')
         self.date = datetime.fromtimestamp(int(epoch))
 
         # txt_forecast elements
         self.day_icon = _getNodeValue(day, 'icon')
-        self.nt_icon = _getNodeValue(night, 'icon')
+        self.night_icon = _getNodeValue(night, 'icon')
         self.daytext = _getNodeValue(day, 'fcttext')
         self.nighttext = _getNodeValue(night, 'fcttext')
-        self.daypop = int(_getNodeValue(day, 'pop')) # probability of precipitation
+        
+        # probability of precipitation
+        self.pop = simple.getElementsByTagName('pop')[0].firstChild.nodeValue
+        self.daypop = int(_getNodeValue(day, 'pop'))
         self.nightpop = int(_getNodeValue(night, 'pop'))
 
         # simpleforecast elements
         self.period = simple.getElementsByTagName('period')[0].firstChild.nodeValue
-        #self.period = int(_getNodeValue(simple, 'period'))
         
         high = simple.getElementsByTagName('high')
         self.high_F = int(_getNodeValue(high[0], 'fahrenheit'))
@@ -76,9 +77,9 @@ class ForecastDay(object):
         self.low_F = int(_getNodeValue(low[0], 'fahrenheit'))
         
         self.humidity = simple.getElementsByTagName('avehumidity')[0].firstChild.nodeValue
-        #self.humidity = _getNodeValue(simple, 'avehumidity')
 
-        qpf_allday = simple.getElementsByTagName('qpf_allday') # quantity precip. fallen
+        # quantity precipitation forecasted
+        qpf_allday = simple.getElementsByTagName('qpf_allday')
         self.qpf_allday_in = float(_getNodeValue(qpf_allday[0], 'in'))
 
         qpf_day = simple.getElementsByTagName('qpf_day')
@@ -86,17 +87,38 @@ class ForecastDay(object):
 
         qpf_night = simple.getElementsByTagName('qpf_night')
         self.qpf_night_in = float(_getNodeValue(qpf_night[0], 'in'))
-
+        
+        # wind
+        minwind = simple.getElementsByTagName('avewind')
+        self.minwind_mph = int(_getNodeValue(minwind[0], 'mph'))
+        self.minwind_degrees = float(_getNodeValue(minwind[0], 'degrees'))
+        self.minwind_dir = _getNodeValue(minwind[0], 'dir')
         maxwind = simple.getElementsByTagName('maxwind')
         self.maxwind_mph = int(_getNodeValue(maxwind[0], 'mph'))
         self.maxwind_degrees = float(_getNodeValue(maxwind[0], 'degrees'))
         self.maxwind_dir = _getNodeValue(maxwind[0], 'dir')
-
+        
         # metric values not implemented
         # snow_allday, snow_day, snow_night elements not implemented
 
     def __str__(self):
-        return self.date.strftime('%Y-%m-%d')
+        output = self.date.strftime('%A %b-%d-%Y') + '\n'
+        output += '\tHigh: ' + str(self.high_F) + '\n'
+        output += '\tLow: ' + str(self.low_F) + '\n'
+        output += '\tHumidity: ' + str(self.humidity) + '\n'
+        output += '\tprecip: ' + str(self.qpf_allday_in) + '\"\n'
+        output += '\tchance: ' + str(self.pop) + '%\n'
+        output += '\twinds: ' + self.minwind_dir + ' @ ' \
+            + str(self.minwind_mph) + '-' + str(self.maxwind_mph) + 'mph\n'
+        output += '\tDay-time:\n'
+        output += '\t\t' + self.daytext + '\n'
+        output += '\t\tprecip: ' + str(self.qpf_day_in) + '\"\n'
+        output += '\t\tchance: ' + str(self.daypop) + '%\n'
+        output += '\tNight-time:\n'
+        output += '\t\t' + self.nighttext + '\n'
+        output += '\t\tprecip: ' + str(self.qpf_night_in) + '\"\n'
+        output += '\t\tchance: ' + str(self.nightpop) + '%\n'
+        return output
 
     #@staticmethod
     #def degreesToDirection(deg):
