@@ -1,3 +1,10 @@
-﻿.oddperiod {
+﻿.oddperiod, .evenperiod {
+    width:800px;
+    height:300px;
+}
+.oddperiod {
     fill:lightgray;
+}
+.evenperiod {
+    fill:lightblue;
 }
