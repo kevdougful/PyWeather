@@ -1,4 +1,17 @@
-﻿.oddperiod, .evenperiod {
+﻿/* element level selectors */
+text {
+    font-family:
+        'Lucida Sans', 
+        'Lucida Sans Regular', 
+        'Lucida Grande', 
+        'Lucida Sans Unicode', 
+        Geneva, 
+        Verdana, 
+        sans-serif
+}
+
+/* period containers */
+.oddperiod, .evenperiod {
     width:800px;
     height:300px;
 }
@@ -7,4 +20,31 @@
 }
 .evenperiod {
     fill:lightblue;
+}
+.maintitle {
+    font-size:24px;
+}
+
+/* main icon */
+.icontitle {
+    text-align:center;
+    text-anchor:middle;
+}
+
+/* high, low, humidity */
+.highlabel, .lowlabel, .humiditylabel {
+    font-size:20px;
+}
+.high, .low, .humidity {
+    font-size:20px;
+}
+.highlabel {
+    text-align:left;
+}
+
+/* rain info */
+.dayrain {
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
 }
