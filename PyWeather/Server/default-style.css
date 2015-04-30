@@ -46,5 +46,20 @@ text {
 .dayrain {
     font-size:20px;
     font-weight:bold;
+    text-anchor:middle;
     text-align:center;
+    fill:white;
+}
+#dayrainicon {
+
+}
+
+/* overnight info */
+.oddovernightframe, .evenovernightframe {
+    fill:none;
+    stroke-width:2px;
+    stroke:black;
+}
+.oddovernighttitle, .evenovernighttitle {
+    font-size:18px;
 }
