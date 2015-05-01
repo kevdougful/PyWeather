@@ -16,10 +16,10 @@ text {
     height:300px;
 }
 .oddperiod {
-    fill:lightgray;
+    fill:none;
 }
 .evenperiod {
-    fill:lightblue;
+    fill:lightgray;
 }
 .maintitle {
     font-size:24px;
@@ -29,6 +29,12 @@ text {
 .icontitle {
     text-align:center;
     text-anchor:middle;
+}
+
+/* day/night text */
+.daytext, .nighttext {
+    /*font-size:10px;*/
+    font-style:italic;
 }
 
 /* high, low, humidity */
@@ -43,7 +49,7 @@ text {
 }
 
 /* rain info */
-.dayrain {
+.dayrain, .nightrain {
     font-size:20px;
     font-weight:bold;
     text-anchor:middle;
@@ -62,4 +68,7 @@ text {
 }
 .oddovernighttitle, .evenovernighttitle {
     font-size:18px;
+}
+#nightrainicon {
+
 }
