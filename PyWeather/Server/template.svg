@@ -31,67 +31,196 @@
   <path id="wind" d="M62.781,0.0062768c-1.621,0.18889-7.737,6.4392-19.093,25.311,3.0187,0.032,5.663,1.6919,7.0938,4.1247,11.41-20.557,13.346-28.772,12.25-29.404-0.0685-0.039435-0.14194-0.043841-0.25-0.031248zm-19.187,29.467c-2.2942,0-4.1562,1.8647-4.1562,4.156s1.862,4.156,4.1562,4.156,4.1562-1.8647,4.1562-4.156-1.862-4.156-4.1562-4.156zm-7.2188,0.0625c-23.477,0.41497-31.531,2.8316-31.531,4.0935,0,1.2609,8.0532,3.6795,31.531,4.0935-0.68785-1.2069-1.0938-2.6066-1.0938-4.0935,0-1.4859,0.40594-2.8856,1.0938-4.0935zm14.406,8.2495c-1.4238,2.4358-4.0448,4.0887-7.0625,4.1247,12.105,20.107,18.216,25.878,19.312,25.248,1.0943-0.63196-0.84705-8.8283-12.25-29.373zm-50.468,2.062c-0.063218-0.0073-0.11601,0.0082-0.15625,0.03125-0.6438,0.373,0.50625,5.156,7.0312,16.999,0.9162-1.38,2.4383-2.304,4.1875-2.438-6.5661-10.832-10.114-14.483-11.062-14.592zm65.062,0c-0.06321-0.0073-0.11601,0.0082-0.15625,0.03125-0.643,0.37298,0.50625,5.1567,7.0312,16.999,0.9172-1.3799,2.4393-2.3034,4.1875-2.4373-6.566-10.833-10.113-14.484-11.061-14.593zm-25.938,3.0311,0,57.121,8.3125,0,0-43.935c-2.379-3.518-5.134-7.856-8.31-13.186zm-27.655,14.28c-1.5295,0-2.75,1.2223-2.75,2.7498s1.2205,2.7811,2.75,2.7811,2.7812-1.2536,2.7812-2.7811-1.2518-2.7498-2.7812-2.7498zm65.094,0c-1.5295,0-2.7812,1.2223-2.7812,2.7498s1.2518,2.7811,2.7812,2.7811c1.5295,0,2.7812-1.2536,2.7812-2.7811s-1.2518-2.7498-2.7812-2.7498zm-60.125,0.344c0.35844,0.73095,0.59375,1.5372,0.59375,2.4061,0,0.87594-0.2293,1.7014-0.59375,2.4373,13.471-0.28298,18.156-1.6671,18.156-2.4061,0-0.74195-4.6902-2.1544-18.156-2.4373zm65.094,0c0.35744,0.73095,0.5625,1.5372,0.5625,2.4061,0,0.87594-0.20306,1.7014-0.5625,2.4373,13.471-0.283,18.156-1.667,18.156-2.406,0-0.742-4.69-2.154-18.156-2.437zm-74.656,5.468c-6.523,11.842-7.675,16.627-7.0312,16.999,0.644,0.371,4.2152-3.01,11.219-14.562-1.7502-0.135-3.2694-1.056-4.1875-2.437zm65.062,0c-6.524,11.842-7.675,16.623-7.031,16.999,0.643,0.37,4.216-3.007,11.219-14.562-1.752-0.135-3.27-1.056-4.188-2.437zm-57.688,2.5311c-2.15,3.6138-3.9764,6.4613-5.5312,8.7182l-0.0308,25.78h5.5312l0.03125-34.498zm65.094,0c-2.1496,3.6137-4.0086,6.4613-5.5625,8.7182v25.78h5.5312l0.03125-34.498z"/>
   <polygon id="arrow" points="0,40 10,0 20,40 10,30"/>
 </defs>
-  <g id="1">
-    <!-- main container -->
-    <rect id="period1" class="oddperiod"
-        x="0" y="0" width="800" height="300"/>
-    <text id="period1title" class="maintitle" x="15" y="35">Monday 4/27</text>
-    <text id="period1daytext0" class="daytext" x="200" y="20">
-      Some clouds in the morning will give way to mainly sunny skies 
-    </text>
-    <text id="period1daytext1" class="daytext" x="200" y="40">
-      for the afternoon.
-    </text>
+<g id="1">
+  <!-- main container -->
+  <rect id="period1" class="oddperiod"
+      x="0" y="0" width="800" height="300"/>
+  <text id="period1title" class="maintitle" x="15" y="35">Monday 4/27</text>
+  <text id="period1daytext0" class="daytext" x="200" y="20">
+    Some clouds in the morning will give way to mainly sunny skies 
+  </text>
+  <text id="period1daytext1" class="daytext" x="200" y="40">
+    for the afternoon.
+  </text>
           
-    <!-- main icon -->
-    <g transform="scale(1.7)">
-      <use xlink:href="#blizzard" x="15" y="40"/>
-    </g>
-    
-    <!-- high, low, humidity -->
-    <text id="period1highlabel" class="highlabel" x="235" y="70">High:</text>
-    <text id="period1high" class="high" x="295" y="70">75°F</text>
-    <text id="period1lowlabel" class="lowlabel" x="235" y="100">Low:</text>
-    <text id="period1low" class="low" x="295" y="100">55°F</text>
-    <text id="period1humiditylabel" class="humiditylabel" x="235" y="130">RH:</text>
-    <text id="period1humidity" class="humidity" x="295" y="130">25%</text>
-  
-    <!-- rain info -->
-    <g transform="scale(2.5)">
-      <use xlink:href="#umb" x="90" y="60" id="dayrainicon"/>
-    </g>
-    <text id="period1dayrainchance" class="dayrain" x="285" y="180">100%</text>
-    <text id="period1dayrainamount" class="dayrain" x="285" y="205">0.5"</text>
-
-    <!-- overnight info -->
-    <rect id="period1overnightframe" class="oddovernightframe"
-          x="400" y="50" width="350" height="240"/>
-    <text id="period1overnight" class="oddovernighttitle" x="410" y="75">Overnight</text>
-    <text id="period1nighttext" class="nighttext" x="410" y="95">
-      A few passing clouds.
-    </text>
-    <g transform="scale(1.3)">
-      <use xlink:href="#blizzard" x="320" y="95"/>
-    </g>
-    <g transform="scale(2.5)">
-      <use xlink:href="#umb" x="240" y="50"/>
-    </g>
-    <text id="period1nightrainchance" class="nightrain" x="662" y="155">100%</text>
-    <text id="period1nightrainamount" class="nightrain" x="662" y="180">0.5"</text>
-    
+  <!-- main icon -->
+  <g transform="scale(1.7)">
+    <use xlink:href="#blizzard" x="15" y="40"/>
   </g>
-  <rect id="period2" class="evenperiod"
-        x="0" y="300" width="800" height="300">
+    
+  <!-- high, low, humidity -->
+  <text id="period1highlabel" class="highlabel" x="235" y="70">High:</text>
+  <text id="period1high" class="high" x="295" y="70">75°F</text>
+  <text id="period1lowlabel" class="lowlabel" x="235" y="100">Low:</text>
+  <text id="period1low" class="low" x="295" y="100">55°F</text>
+  <text id="period1humiditylabel" class="humiditylabel" x="235" y="130">RH:</text>
+  <text id="period1humidity" class="humidity" x="295" y="130">25%</text>
   
-  </rect>
-  
-  <rect id="period3" class="oddperiod"
-        x="0" y="600" width="800" height="300">
-  
-  </rect>
+  <!-- rain info -->
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="90" y="60" id="dayrainicon"/>
+  </g>
+  <text id="period1dayrainchance" class="dayrain" x="285" y="180">100%</text>
+  <text id="period1dayrainamount" class="dayrain" x="285" y="205">0.5"</text>
 
-  <rect id="period4" class="evenperiod"
-        x="0" y="900" width="800" height="300">
+  <!-- overnight info -->
+  <rect id="period1overnightframe" class="oddovernightframe"
+        x="400" y="50" width="350" height="240"/>
+  <text id="period1overnight" class="oddovernighttitle" x="410" y="75">Overnight</text>
+  <text id="period1nighttext" class="nighttext" x="410" y="95">
+    A few passing clouds.
+  </text>
+  <g transform="scale(1.3)">
+    <use xlink:href="#blizzard" x="320" y="95"/>
+  </g>
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="240" y="50"/>
+  </g>
+  <text id="period1nightrainchance" class="nightrain" x="662" y="155">100%</text>
+  <text id="period1nightrainamount" class="nightrain" x="662" y="180">0.5"</text>
+</g>
+<g id="2">
+  <!-- main container -->
+  <rect id="period2" class="evenperiod"
+      x="0" y="300" width="800" height="300"/>
+  <text id="period2title" class="maintitle" x="15" y="335">Monday 4/27</text>
+  <text id="period2daytext0" class="daytext" x="200" y="320">
+    Some clouds in the morning will give way to mainly sunny skies 
+  </text>
+  <text id="period2daytext1" class="daytext" x="200" y="340">
+    for the afternoon.
+  </text>
+          
+  <!-- main icon -->
+  <g transform="scale(1.7)">
+    <use xlink:href="#blizzard" x="15" y="217"/>
+  </g>
+    
+  <!-- high, low, humidity -->
+  <text id="period2highlabel" class="highlabel" x="235" y="370">High:</text>
+  <text id="period2high" class="high" x="295" y="370">75°F</text>
+  <text id="period2lowlabel" class="lowlabel" x="235" y="400">Low:</text>
+  <text id="period2low" class="low" x="295" y="400">55°F</text>
+  <text id="period2humiditylabel" class="humiditylabel" x="235" y="430">RH:</text>
+  <text id="period2humidity" class="humidity" x="295" y="430">25%</text>
   
-  </rect>
+  <!-- rain info -->
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="90" y="180" id="dayrainicon"/>
+  </g>
+  <text id="period2dayrainchance" class="dayrain" x="285" y="480">100%</text>
+  <text id="period2dayrainamount" class="dayrain" x="285" y="505">0.5"</text>
+
+  <!-- overnight info -->
+  <rect id="period2overnightframe" class="oddovernightframe"
+        x="400" y="350" width="350" height="240"/>
+  <text id="period2overnight" class="oddovernighttitle" x="410" y="375">Overnight</text>
+  <text id="period2nighttext" class="nighttext" x="410" y="395">
+    A few passing clouds.
+  </text>
+  <g transform="scale(1.3)">
+    <use xlink:href="#blizzard" x="320" y="326"/>
+  </g>
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="240" y="170"/>
+  </g>
+  <text id="period2nightrainchance" class="nightrain" x="662" y="455">100%</text>
+  <text id="period2nightrainamount" class="nightrain" x="662" y="480">0.5"</text>
+</g>
+<g id="3">
+  <!-- main container -->
+  <rect id="period3" class="oddperiod"
+      x="0" y="600" width="800" height="300"/>
+  <text id="period3title" class="maintitle" x="15" y="635">Monday 4/27</text>
+  <text id="period3daytext0" class="daytext" x="200" y="620">
+    Some clouds in the morning will give way to mainly sunny skies 
+  </text>
+  <text id="period3daytext1" class="daytext" x="200" y="640">
+    for the afternoon.
+  </text>
+          
+  <!-- main icon -->
+  <g transform="scale(1.7)">
+    <use xlink:href="#blizzard" x="15" y="394"/>
+  </g>
+    
+  <!-- high, low, humidity -->
+  <text id="period3highlabel" class="highlabel" x="235" y="670">High:</text>
+  <text id="period3high" class="high" x="295" y="670">75°F</text>
+  <text id="period3lowlabel" class="lowlabel" x="235" y="700">Low:</text>
+  <text id="period3low" class="low" x="295" y="700">55°F</text>
+  <text id="period3humiditylabel" class="humiditylabel" x="235" y="730">RH:</text>
+  <text id="period3humidity" class="humidity" x="295" y="730">25%</text>
+  
+  <!-- rain info -->
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="90" y="300" id="dayrainicon"/>
+  </g>
+  <text id="period3dayrainchance" class="dayrain" x="285" y="780">100%</text>
+  <text id="period3dayrainamount" class="dayrain" x="285" y="805">0.5"</text>
+
+  <!-- overnight info -->
+  <rect id="period3overnightframe" class="oddovernightframe"
+        x="400" y="650" width="350" height="240"/>
+  <text id="period3overnight" class="oddovernighttitle" x="410" y="675">Overnight</text>
+  <text id="period3nighttext" class="nighttext" x="410" y="695">
+    A few passing clouds.
+  </text>
+  <g transform="scale(1.3)">
+    <use xlink:href="#blizzard" x="320" y="557"/>
+  </g>
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="240" y="290"/>
+  </g>
+  <text id="period3nightrainchance" class="nightrain" x="662" y="755">100%</text>
+  <text id="period3nightrainamount" class="nightrain" x="662" y="780">0.5"</text>
+</g>
+<g id="3">
+  <!-- main container -->
+  <rect id="period4" class="evenperiod"
+      x="0" y="900" width="800" height="300"/>
+  <text id="period4title" class="maintitle" x="15" y="935">Monday 4/27</text>
+  <text id="period4daytext0" class="daytext" x="200" y="920">
+    Some clouds in the morning will give way to mainly sunny skies 
+  </text>
+  <text id="period4daytext1" class="daytext" x="200" y="940">
+    for the afternoon.
+  </text>
+          
+  <!-- main icon -->
+  <g transform="scale(1.7)">
+    <use xlink:href="#blizzard" x="15" y="571"/>
+  </g>
+    
+  <!-- high, low, humidity -->
+  <text id="period4highlabel" class="highlabel" x="235" y="970">High:</text>
+  <text id="period4high" class="high" x="295" y="970">75°F</text>
+  <text id="period4lowlabel" class="lowlabel" x="235" y="1000">Low:</text>
+  <text id="period4low" class="low" x="295" y="1000">55°F</text>
+  <text id="period4humiditylabel" class="humiditylabel" x="235" y="1030">RH:</text>
+  <text id="period4humidity" class="humidity" x="295" y="1030">25%</text>
+  
+  <!-- rain info -->
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="90" y="420" id="dayrainicon"/>
+  </g>
+  <text id="period4dayrainchance" class="dayrain" x="285" y="1080">100%</text>
+  <text id="period4dayrainamount" class="dayrain" x="285" y="1105">0.5"</text>
+
+  <!-- overnight info -->
+  <rect id="period4overnightframe" class="oddovernightframe"
+        x="400" y="950" width="350" height="240"/>
+  <text id="period4overnight" class="oddovernighttitle" x="410" y="975">Overnight</text>
+  <text id="period4nighttext" class="nighttext" x="410" y="995">
+    A few passing clouds.
+  </text>
+  <g transform="scale(1.3)">
+    <use xlink:href="#blizzard" x="320" y="788"/>
+  </g>
+  <g transform="scale(2.5)">
+    <use xlink:href="#umb" x="240" y="410"/>
+  </g>
+  <text id="period4nightrainchance" class="nightrain" x="662" y="1055">100%</text>
+  <text id="period4nightrainamount" class="nightrain" x="662" y="1080">0.5"</text>
+</g>
 </svg>
