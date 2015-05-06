@@ -194,3 +194,6 @@ ModelManifest.xml
 # ignore private API key file
 *.key
 *.pyc
+
+# ignore svg output
+forecast.svg
