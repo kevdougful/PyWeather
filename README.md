@@ -1,18 +1,18 @@
-#PyCaster
+# PyCaster
 ___
 This project provides Python utilities for creating and sending Wunderground API HTTP requests, parsing the reponse and manipulating SVG files for display.
 
-##forecastdata.py
+## forecastdata.py
 This module contains class implementations of API responses.
-###Forecast
+### Forecast
 This class is responsible for forming and sending the HTTP request.  It then does a higher-order parse on the XML response, creating a list of ForecastDay objects.  
 The \_\_init\_\_() method for the Forecast class takes one argument for the location for which the forecast should be requested.  This argument is a string in the form:
     
 `<State>/<City>` or `<Zip Code>`
 
-###ForecastDay
+### ForecastDay
 This class encapsulates all forecast data returned by the API for a particular day.
-####ForecastDay Attributes:
+#### ForecastDay Attributes:
 * __date__: datetime object for day the ForecastDay object represents
 * __day_icon__: icon name (according to Wunderground API presets) for that day's forecasted conditions
 * __night_icon__: icon name (according to Wunderground API presets) for that night's forecasted conditions
@@ -37,7 +37,7 @@ This class encapsulates all forecast data returned by the API for a particular d
 _At this time, metric values are not implemented.  However, Wunderground API does provide these values and will eventually be available_  
 _Snow will be supported at some point also._  
 
-####\_\_str\_\_() implementation:
+#### \_\_str\_\_() implementation:
 The \_\_str\_\_() method of ForecastDay returns a nicely formatted string containing most of the data listed above.  
 
 Below is an example of this output:  
