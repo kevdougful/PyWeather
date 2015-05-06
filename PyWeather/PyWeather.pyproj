@@ -37,6 +37,10 @@
   <ItemGroup>
     <Folder Include="Server\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Server\default-style.css" />
+    <Content Include="Server\template.svg" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>

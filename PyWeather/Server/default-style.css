@@ -1,0 +1,74 @@
+﻿/* element level selectors */
+text {
+    font-family:
+        'Lucida Sans', 
+        'Lucida Sans Regular', 
+        'Lucida Grande', 
+        'Lucida Sans Unicode', 
+        Geneva, 
+        Verdana, 
+        sans-serif
+}
+
+/* period containers */
+.oddperiod, .evenperiod {
+    width:800px;
+    height:300px;
+}
+.oddperiod {
+    fill:none;
+}
+.evenperiod {
+    fill:lightgray;
+}
+.maintitle {
+    font-size:24px;
+}
+
+/* main icon */
+.icontitle {
+    text-align:center;
+    text-anchor:middle;
+}
+
+/* day/night text */
+.daytext, .nighttext {
+    /*font-size:10px;*/
+    font-style:italic;
+}
+
+/* high, low, humidity */
+.highlabel, .lowlabel, .humiditylabel {
+    font-size:20px;
+}
+.high, .low, .humidity {
+    font-size:20px;
+}
+.highlabel {
+    text-align:left;
+}
+
+/* rain info */
+.dayrain, .nightrain {
+    font-size:20px;
+    font-weight:bold;
+    text-anchor:middle;
+    text-align:center;
+    fill:white;
+}
+#dayrainicon {
+
+}
+
+/* overnight info */
+.oddovernightframe, .evenovernightframe {
+    fill:none;
+    stroke-width:2px;
+    stroke:black;
+}
+.oddovernighttitle, .evenovernighttitle {
+    font-size:18px;
+}
+#nightrainicon {
+
+}
