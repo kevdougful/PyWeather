@@ -1,6 +1,6 @@
 import getxml
-from forecastdata import Forecast
+import forecastdata
+import svgmanip
 
-cast = Forecast('MO/Maryland_Heights')
-for day in cast.ForecastDays:
-    print(str(day))
+forecast = forecastdata.Forecast('MO/Maryland_Heights')
+svgmanip.write_forecast(forecast)
