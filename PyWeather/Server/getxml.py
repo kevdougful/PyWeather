@@ -1,7 +1,5 @@
 '''
-getxml.py
-
-This module handles forming an HTTP request and sending it to
+Handles forming an HTTP request and sending it to
 the Wunderground API.  The parsed XML response is returned.
 '''
 
@@ -17,7 +15,7 @@ def _get_apikey():
 
 def _get_url(type, location):
     '''
-    returns an HTTP URL for the desired location and type of request.
+    Returns an HTTP URL for the desired location and type of request.
     '''
     url = 'http://api.wunderground.com/api/'
     url += _get_apikey() + '/' + type + '/q/' + location + '.xml'
@@ -25,7 +23,7 @@ def _get_url(type, location):
 
 def xml_request(type, location):
     '''
-    makes an HTTP request for desired location and type of request.
+    Makes an HTTP request for desired location and type of request.
     returns the response as parsed XML.
     '''
     # get URL
