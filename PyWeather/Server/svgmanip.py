@@ -1,23 +1,50 @@
-'''
-Provides tools for using applying data from a Forecast object
-to an SVG template.
-'''
+"""Provides tools for populating and SVG template with Forecast object data.
+
+This file is part of PyWeather.
+
+PyWeather is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+PyWeather is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with PyWeather.  If not, see <http://www.gnu.org/licenses/>.
+"""
 import codecs
 
 def write_forecast(forecast_obj):
-    '''
-    Writes a Forecast object using template.svg
-    '''
+    """Opens an SVG file and populates it with Forecast data.
+
+    Args:
+        forecast_obj: Forecast object containing data to populate.
+
+    Returns:
+        None.
+    """
     # Open the SVG template (read-only)
     output = codecs.open('./template.svg', 'r', encoding='utf-8').read()
     for day in forecast_obj.ForecastDays:
+        # Write each day to the opened SVG file
         output = write_forecastday(output, day)
+    # Save the populated SVG file
     codecs.open('forecast.svg', 'w', encoding='utf-8').write(output)
 
 def write_forecastday(svg, forecastday_obj):
-    '''
-    Writes a ForecastDay object to the given svg object
-    '''
+    """Populates an opened SVG file with data from a ForecastDay object.
+
+    Args:
+        svg: An opened SVG file.
+        forecastday_obj: ForecastDay object containing data to populate.
+
+    Returns:
+        The opened SVG file with newly populated data.
+    """
+    # Get the ForecastDay's position (period) in the Forecast
     period = forecastday_obj.period
 
     # Icons
@@ -28,10 +55,10 @@ def write_forecastday(svg, forecastday_obj):
 
     # Text
     svg = svg.replace(period + 'title', forecastday_obj.date.strftime('%a %b-%d'))
-    svg = svg.replace(period + 'daytext1', _parse_text(forecastday_obj.daytext)[0])
-    svg = svg.replace(period + 'daytext2', _parse_text(forecastday_obj.daytext)[1])
-    svg = svg.replace(period + 'nighttext1', _parse_text(forecastday_obj.nighttext)[0])
-    svg = svg.replace(period + 'nighttext2', _parse_text(forecastday_obj.nighttext)[1])
+    svg = svg.replace(period + 'daytext1', _clean_text(forecastday_obj.daytext)[0])
+    svg = svg.replace(period + 'daytext2', _clean_text(forecastday_obj.daytext)[1])
+    svg = svg.replace(period + 'nighttext1', _clean_text(forecastday_obj.nighttext)[0])
+    svg = svg.replace(period + 'nighttext2', _clean_text(forecastday_obj.nighttext)[1])
 
     # High, low, humidity
     svg = svg.replace(period + 'high', str(forecastday_obj.high_F) + 'F')
@@ -45,28 +72,47 @@ def write_forecastday(svg, forecastday_obj):
     svg = svg.replace(period + 'nightrainamount', str(forecastday_obj.qpf_night_in) + '\"')
     return svg
 
-def _parse_text(text):
-    '''
-    Parses forecast text: removes Low/High and Wind info
-    '''
-    new_end = text.find('High')
-    if new_end == -1:
-        new_end = text.find('Low')
-    if new_end > -1:
-        text = text[:new_end - 1]
-    return _wrap_text(text)
+def _clean_text(forecast_text):
+    """Cleans forecast text for display in SVG template
 
-def _wrap_text(text):
-    '''
-    Splits a long line of text into two lines
-    '''
-    breaklength = 30
+    The API response contains plain english desciptions of the day's 
+    forecast.  These strings always contain a summary of the high,
+    low, and wind speed/direction.  This information is captured in
+    other attributes of the ForecastDay class.  Also, the forecast
+    text is often too long to display on one line in the SVG
+    template, so this method splits long lines into an array of two
+    lines.
+
+    Args:
+        forecast_text: Long, verbose string of forecast text to clean.
+
+    Returns:
+        A 2-element array containing cleaned forecast text.
+    """
+    new_end = forecast_text.find('High')
+    if new_end == -1:
+        new_end = forecast_text.find('Low')
+    if new_end > -1:
+        forecast_text = forecast_text[:new_end - 1]
+    return _wrap_text(forecast_text)
+
+def _wrap_text(forecast_text):
+    """Splits a long line of text into two lines
+
+    Args:
+        forecast_text: Long string of forecast text to split into 2 lines.
+
+    Returns:
+        A 2-element array containing forecast text.
+    """
+    # Position to begin looking for whitespace to break the line
+    break_length = 30
     wrapped_text = ['', '']
-    if len(text) <= breaklength:
+    if len(forecast_text) <= break_length:
         # Don't wrap short strings
-        wrapped_text[0] = text
+        wrapped_text[0] = forecast_text
     else:
-        br = text.find(' ', breaklength)
-        wrapped_text[0] = text[:br]
-        wrapped_text[1] = text[br:]
+        br = forecast_text.find(' ', break_length)
+        wrapped_text[0] = forecast_text[:br]
+        wrapped_text[1] = forecast_text[br:]
     return wrapped_text

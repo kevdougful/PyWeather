@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import getxml
 import forecastdata
 import svgmanip
