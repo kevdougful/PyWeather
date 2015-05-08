@@ -14,6 +14,12 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with PyWeather.  If not, see <http://www.gnu.org/licenses/>.
+
+Inspiration as well as coding strategies are borrowed heavily from
+Matthew Petroff's Kindle Weather Display project.
+
+http://mpetroff.net/2012/09/kindle-weather-display/
+https://github.com/mpetroff/kindle-weather-display
 """
 from getxml import xml_request
 from datetime import datetime
@@ -45,8 +51,19 @@ class Forecast(object):
     Attributes:
         ForecastDays: list of ForecastDay objects containing the forecast's data.
     """
-    def __init__(self, location):
-        xml = xml_request('forecast', location)
+    def __init__(self, requested_location):
+        """Creates a new instance of the Forecast class.
+
+        Args:
+            requested_location: Geographical location for which to request.
+                Acceptable forms:
+                    <State>/<City> (e.g. MO/St_Louis)
+                    <ZIP Code> (e.g. 63167)
+
+        Returns:
+            A new instance of the Forecast class.
+        """
+        xml = xml_request('forecast', requested_location)
         txt_forecast = xml.getElementsByTagName('txt_forecast')
         simpleforecast = xml.getElementsByTagName('simpleforecast')
         
@@ -106,63 +123,79 @@ class ForecastDay(object):
         qpf_day_in: Quantity of precipitation forecasted for day-time (inches).
         qpf_night_in: Quantity of precipitation forecasted for night-time (inches).
         minwind_mph: Minimum wind speed forecasted (miles per hour).
-        minwind_degrees: Forecasted prevailing wind direction (compass heading 0-360°).
+        minwind_degrees: Forecasted prevailing wind direction (compass heading 0-360).
         minwind_dir: Forecasted prevailing wind direction (e.g. NNE).
         maxwind_mph: Maximum wind speed forecasted (miles per hour).
-        maxwind_degrees: Forecasted prevailing wind direction (compass heading 0-360°).
+        maxwind_degrees: Forecasted prevailing wind direction (compass heading 0-360).
         maxwind_dir: Forecasted prevailing wind direction (e.g. NNE).
     """
-    def __init__(self, day, night, simple):
+    def __init__(self, day_xml, night_xml, simple_xml):
+        """Creates a new instance of the ForecastDay class.
+
+        Args:
+            day_xml: The day-time periods of the txt_forecast section.
+            night_xml: The day-time periods of the txt_forecast section.
+            simple_xml: The simpleforecast section of the API response.
+
+        Returns:
+            A new instance of the ForecastDay class.
+        """
+        # NOTE:
+        # metric values not yet implemented
+        # snow_allday, snow_day, snow_night elements not yet implemented
+
         # set the date
-        epoch = simple.getElementsByTagName('epoch')[0].firstChild.nodeValue
+        epoch = simple_xml.getElementsByTagName('epoch')[0].firstChild.nodeValue
         self.forecast_date = datetime.fromtimestamp(int(epoch))
 
         # txt_forecast elements
-        self.day_icon = _getNodeValue(day, 'icon')
-        self.night_icon = _getNodeValue(night, 'icon')
-        self.day_text = _getNodeValue(day, 'fcttext')
-        self.night_text = _getNodeValue(night, 'fcttext')
+        self.day_icon = _getNodeValue(day_xml, 'icon')
+        self.night_icon = _getNodeValue(night_xml, 'icon')
+        self.day_text = _getNodeValue(day_xml, 'fcttext')
+        self.night_text = _getNodeValue(night_xml, 'fcttext')
         
         # probability of precipitation
-        self.pop = simple.getElementsByTagName('pop')[0].firstChild.nodeValue
-        self.day_pop = int(_getNodeValue(day, 'pop'))
-        self.night_pop = int(_getNodeValue(night, 'pop'))
+        self.pop = simple_xml.getElementsByTagName('pop')[0].firstChild.nodeValue
+        self.day_pop = int(_getNodeValue(day_xml, 'pop'))
+        self.night_pop = int(_getNodeValue(night_xml, 'pop'))
 
         # simpleforecast elements
-        self.period = simple.getElementsByTagName('period')[0].firstChild.nodeValue
+        self.period = simple_xml.getElementsByTagName('period')[0].firstChild.nodeValue
         
-        high = simple.getElementsByTagName('high')
+        high = simple_xml.getElementsByTagName('high')
         self.high_F = int(_getNodeValue(high[0], 'fahrenheit'))
         
-        low = simple.getElementsByTagName('low')
+        low = simple_xml.getElementsByTagName('low')
         self.low_F = int(_getNodeValue(low[0], 'fahrenheit'))
         
-        self.humidity = simple.getElementsByTagName('avehumidity')[0].firstChild.nodeValue
+        self.humidity = simple_xml.getElementsByTagName('avehumidity')[0].firstChild.nodeValue
 
         # quantity precipitation forecasted
-        qpf_allday = simple.getElementsByTagName('qpf_allday')
+        qpf_allday = simple_xml.getElementsByTagName('qpf_allday')
         self.qpf_allday_in = float(_getNodeValue(qpf_allday[0], 'in'))
 
-        qpf_day = simple.getElementsByTagName('qpf_day')
+        qpf_day = simple_xml.getElementsByTagName('qpf_day')
         self.qpf_day_in = float(_getNodeValue(qpf_day[0], 'in'))
 
-        qpf_night = simple.getElementsByTagName('qpf_night')
+        qpf_night = simple_xml.getElementsByTagName('qpf_night')
         self.qpf_night_in = float(_getNodeValue(qpf_night[0], 'in'))
         
         # wind
-        minwind = simple.getElementsByTagName('avewind')
+        minwind = simple_xml.getElementsByTagName('avewind')
         self.minwind_mph = int(_getNodeValue(minwind[0], 'mph'))
         self.minwind_degrees = float(_getNodeValue(minwind[0], 'degrees'))
         self.minwind_dir = _getNodeValue(minwind[0], 'dir')
-        maxwind = simple.getElementsByTagName('maxwind')
+        maxwind = simple_xml.getElementsByTagName('maxwind')
         self.maxwind_mph = int(_getNodeValue(maxwind[0], 'mph'))
         self.maxwind_degrees = float(_getNodeValue(maxwind[0], 'degrees'))
         self.maxwind_dir = _getNodeValue(maxwind[0], 'dir')
         
-        # metric values not implemented
-        # snow_allday, snow_day, snow_night elements not implemented
-
     def __str__(self):
+        """Creates a neatly formatted string using this object's encapsulated data.
+
+        Returns:
+            Neatly formatted string using this object's encapsulated data.
+        """
         output = self.forecast_date.strftime('%A %b-%d-%Y') + '\n'
         output += '\tHigh: ' + str(self.high_F) + '\n'
         output += '\tLow: ' + str(self.low_F) + '\n'
@@ -180,28 +213,3 @@ class ForecastDay(object):
         output += '\t\tprecip: ' + str(self.qpf_night_in) + '\"\n'
         output += '\t\tchance: ' + str(self.night_pop) + '%\n'
         return output
-
-    #@staticmethod
-    #def degreesToDirection(deg):
-    #    '''
-    #    convert 0-360° float to three letter heading (e.g. NNE)
-    #    '''
-    #    if deg < 0 or deg > 360:
-    #        raise Exception('degree value must be 0-360')
-    #    elif deg >= 0 and deg <= 11.25: return 'N'
-    #    elif deg > 348.75 and deg <= 360: return "N"
-    #    elif deg > 11.25 and deg <= 33.75: return "NNE"
-    #    elif deg > 33.75 and deg <= 56.25: return "NE"
-    #    elif deg > 56.25 and deg <= 78.75: return "ENE"
-    #    elif deg > 78.75 and deg <= 101.25: return "E"
-    #    elif deg > 101.25 and deg <= 123.75: return "ESE"
-    #    elif deg > 123.75 and deg <= 146.25: return "SE"
-    #    elif deg > 146.25 and deg <= 168.75: return "SSE"
-    #    elif deg > 168.75 and deg <= 191.25: return "S"
-    #    elif deg > 191.25 and deg <= 213.75: return "SSW"
-    #    elif deg > 213.75 and deg <= 236.25: return "SW"
-    #    elif deg > 236.25 and deg <= 258.75: return "WSW"
-    #    elif deg > 258.75 and deg <= 281.25: return "W"
-    #    elif deg > 281.25 and deg <= 303.75: return "WNW"
-    #    elif deg > 303.75 and deg <= 326.25: return "NW"
-    #    elif deg > 326.25 and deg <= 348.75: return "NNW"

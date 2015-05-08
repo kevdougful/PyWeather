@@ -14,6 +14,12 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with PyWeather.  If not, see <http://www.gnu.org/licenses/>.
+
+Inspiration as well as coding strategies are borrowed heavily from
+Matthew Petroff's Kindle Weather Display project.
+
+http://mpetroff.net/2012/09/kindle-weather-display/
+https://github.com/mpetroff/kindle-weather-display
 """
 
 from urllib import request

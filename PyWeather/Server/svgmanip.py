@@ -14,6 +14,12 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with PyWeather.  If not, see <http://www.gnu.org/licenses/>.
+
+Inspiration as well as coding strategies are borrowed heavily from
+Matthew Petroff's Kindle Weather Display project.
+
+http://mpetroff.net/2012/09/kindle-weather-display/
+https://github.com/mpetroff/kindle-weather-display
 """
 import codecs
 
@@ -54,11 +60,11 @@ def write_forecastday(svg, forecastday_obj):
     period = 'period' + period
 
     # Text
-    svg = svg.replace(period + 'title', forecastday_obj.date.strftime('%a %b-%d'))
-    svg = svg.replace(period + 'daytext1', _clean_text(forecastday_obj.daytext)[0])
-    svg = svg.replace(period + 'daytext2', _clean_text(forecastday_obj.daytext)[1])
-    svg = svg.replace(period + 'nighttext1', _clean_text(forecastday_obj.nighttext)[0])
-    svg = svg.replace(period + 'nighttext2', _clean_text(forecastday_obj.nighttext)[1])
+    svg = svg.replace(period + 'title', forecastday_obj.forecast_date.strftime('%a %b-%d'))
+    svg = svg.replace(period + 'daytext1', _clean_text(forecastday_obj.day_text)[0])
+    svg = svg.replace(period + 'daytext2', _clean_text(forecastday_obj.day_text)[1])
+    svg = svg.replace(period + 'nighttext1', _clean_text(forecastday_obj.night_text)[0])
+    svg = svg.replace(period + 'nighttext2', _clean_text(forecastday_obj.night_text)[1])
 
     # High, low, humidity
     svg = svg.replace(period + 'high', str(forecastday_obj.high_F) + 'F')
@@ -66,8 +72,8 @@ def write_forecastday(svg, forecastday_obj):
     svg = svg.replace(period + 'humidity', str(forecastday_obj.humidity) + '%')
 
     # Rain info
-    svg = svg.replace(period + 'dayrainchance', str(forecastday_obj.daypop) + '%')
-    svg = svg.replace(period + 'nightrainchance', str(forecastday_obj.nightpop) + '%')
+    svg = svg.replace(period + 'dayrainchance', str(forecastday_obj.day_pop) + '%')
+    svg = svg.replace(period + 'nightrainchance', str(forecastday_obj.night_pop) + '%')
     svg = svg.replace(period + 'dayrainamount', str(forecastday_obj.qpf_day_in) + '\"')
     svg = svg.replace(period + 'nightrainamount', str(forecastday_obj.qpf_night_in) + '\"')
     return svg
