@@ -33,7 +33,7 @@ def _get_apikey():
     """
     return open('./api.key').read()
 
-def _get_url(requested_feature, request_query):
+def _get_url(requested_feature, request_query, response_format='xml', request_params=''):
     """Forms an URL using an API key, the type of request, and location desired.
 
     Args:
@@ -48,16 +48,19 @@ def _get_url(requested_feature, request_query):
                 <PWS id> (e.g. pws:KCASANFR70)
                 AutoIP (e.g. autoip)
                 specific IP (e.g. autoip.xml?geo_ip=38.102.136.138)
+        response_format: File format for request response (xml, gif, etc.).
+        request_params: Additional parameters for radar API requests (optional).
+            See: http://www.wunderground.com/weather/api/d/docs?d=layers/radar&MR=1
 
     Returns:
         HTTP URL for the desired location and type of request.
     """
     url = 'http://api.wunderground.com/api/'
-    url += _get_apikey() + '/' + requested_feature + '/q/' + request_query + '.xml'
+    url += _get_apikey() + '/' + requested_feature + '/q/' + request_query + '.' + response_format + request_params
     return url
 
 def xml_request(requested_feature, request_query):
-    """Sends an HTTP request for the desired location and request type
+    """Sends an HTTP request for XML for the desired location and request type
 
     Args:
         requested_feature: Type of API request to send (forecast, 10 day forecast).
@@ -75,11 +78,43 @@ def xml_request(requested_feature, request_query):
     Returns:
         HTTP response as parsed XML.
     """
-    # get URL
+    # Get URL
     url = _get_url(requested_feature, request_query)
-    # send HTTP request
-    req = request.urlopen(url)
-    # read response
-    res = req.read()
-    # return parsed XML
-    return parseString(res)
+    # Send HTTP request
+    http_request = request.urlopen(url)
+    # Read response
+    http_response = http_request.read()
+    # Return parsed XML
+    return parseString(http_response)
+
+def radar_request(request_query, animated=True, response_format='gif', request_params=''):
+    """Sends an HTTP request for a radar image from the API
+
+    Args:
+        request_query: Geographical location for which to request.
+            Acceptable forms:
+                <State>/<City> (e.g. MO/St_Louis)
+                <ZIP Code> (e.g. 63167)
+                <County>/<City? (e.g. Australia/Sydney)
+                <latitude>/<longitude> (e.g. 37.8,-122.4)
+                <Airport code> (e.g. KJFK)
+                <PWS id> (e.g. pws:KCASANFR70)
+                AutoIP (e.g. autoip)
+                specific IP (e.g. autoip.xml?geo_ip=38.102.136.138)
+        animated: Whether to request an animated image.
+        response_format: Image format to request (gif, png, swf).
+        request_params: Additional parameters for radar API requests (optional).
+            See: http://www.wunderground.com/weather/api/d/docs?d=layers/radar&MR=1
+
+    Returns:
+        A radar image.
+    """
+    # Get URL
+    requested_feature = 'animatedradar' if animated else 'radar'
+    url = _get_url(requested_feature, request_query, response_format, request_params)
+    # Send HTTP request
+    http_request = request.urlopen(url)
+    # Read response
+    http_response = http_request.read()
+    # Return the image
+    return http_response
