@@ -37,14 +37,14 @@ The \_\_init\_\_() method for the Forecast class takes one argument for the loca
 ### ForecastDay
 This class encapsulates all forecast data returned by the API for a particular day.
 #### ForecastDay Attributes:
-* __date__: datetime object for day the ForecastDay object represents
+* __forecast_date__: datetime object for day the ForecastDay object represents
 * __day_icon__: icon name (according to Wunderground API presets) for that day's forecasted conditions
 * __night_icon__: icon name (according to Wunderground API presets) for that night's forecasted conditions
-* __daytext__: short description for that day's forecast
-* __nighttext__: short description for that night's forecast
+* __day_text__: short description for that day's forecast
+* __night_text__: short description for that night's forecast
 * __pop__: propbability of precipitation for that entire day
-* __daypop__: propbability of precipitation for that day
-* __nightpop__: propbability of precipitation for that night
+* __day_pop__: propbability of precipitation for that day
+* __night_pop__: propbability of precipitation for that night
 * __period__: the relative chronological position of the ForecastDay within the forecast (1 is today)
 * __high_F__: forecasted high temperature in fahrenheit
 * __low_F__: forecasted low temperature in fahrenheit
