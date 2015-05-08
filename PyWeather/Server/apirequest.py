@@ -42,6 +42,12 @@ def _get_url(request_type, requested_location):
             Acceptable forms:
                 <State>/<City> (e.g. MO/St_Louis)
                 <ZIP Code> (e.g. 63167)
+                <County>/<City? (e.g. Australia/Sydney)
+                <latitude>/<longitude> (e.g. 37.8,-122.4)
+                <Airport code> (e.g. KJFK)
+                <PWS id> (e.g. pws:KCASANFR70)
+                AutoIP (e.g. autoip)
+                specific IP (e.g. autoip.xml?geo_ip=38.102.136.138)
 
     Returns:
         HTTP URL for the desired location and type of request.
@@ -59,6 +65,12 @@ def xml_request(request_type, requested_location):
             Acceptable forms:
                 <State>/<City> (e.g. MO/St_Louis)
                 <ZIP Code> (e.g. 63167)
+                <County>/<City? (e.g. Australia/Sydney)
+                <latitude>/<longitude> (e.g. 37.8,-122.4)
+                <Airport code> (e.g. KJFK)
+                <PWS id> (e.g. pws:KCASANFR70)
+                AutoIP (e.g. autoip)
+                specific IP (e.g. autoip.xml?geo_ip=38.102.136.138)
 
     Returns:
         HTTP response as parsed XML.
