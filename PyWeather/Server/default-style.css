@@ -31,9 +31,8 @@ text {
     text-anchor:middle;
 }
 
-/* day/night text */
-.daytext, .nighttext {
-    /*font-size:10px;*/
+/* day text */
+.daytext {
     font-style:italic;
 }
 
@@ -61,6 +60,10 @@ text {
 }
 
 /* overnight info */
+.nighttext {
+    font-style:italic;
+    font-size:14px;
+}
 .oddovernightframe, .evenovernightframe {
     fill:none;
     stroke-width:2px;

@@ -98,7 +98,7 @@
 
   <!-- Overnight info -->
   <rect id="period1overnightframe" class="oddovernightframe"
-        x="400" y="50" width="350" height="240"/>
+        x="400" y="50" width="375" height="240"/>
   <text class="oddovernighttitle" x="410" y="75">Overnight</text>
   <text class="nighttext" x="410" y="95">period1nighttext1</text>
   <text class="nighttext" x="410" y="115">period1nighttext2</text>
@@ -145,7 +145,7 @@
 
   <!-- Overnight info -->
   <rect id="period2overnightframe" class="oddovernightframe"
-        x="400" y="350" width="350" height="240"/>
+        x="400" y="350" width="375" height="240"/>
   <text class="oddovernighttitle" x="410" y="375">Overnight</text>
   <text class="nighttext" x="410" y="395">period2nighttext1</text>
   <text class="nighttext" x="410" y="415">period2nighttext2</text>
@@ -192,7 +192,7 @@
 
   <!-- Overnight info -->
   <rect id="period3overnightframe" class="oddovernightframe"
-        x="400" y="650" width="350" height="240"/>
+        x="400" y="650" width="375" height="240"/>
   <text class="oddovernighttitle" x="410" y="675">Overnight</text>
   <text class="nighttext" x="410" y="695">period3nighttext1</text>
   <text class="nighttext" x="410" y="715">period3nighttext2</text>
@@ -239,7 +239,7 @@
 
   <!-- Overnight info -->
   <rect id="period4overnightframe" class="oddovernightframe"
-        x="400" y="950" width="350" height="240"/>
+        x="400" y="950" width="375" height="240"/>
   <text class="oddovernighttitle" x="410" y="975">Overnight</text>
   <text class="nighttext" x="410" y="995">period4nighttext1</text>
   <text class="nighttext" x="410" y="1015">period4nighttext2</text>

@@ -61,10 +61,12 @@ def write_forecastday(svg, forecastday_obj):
 
     # Text
     svg = svg.replace(period + 'title', forecastday_obj.forecast_date.strftime('%a %b-%d'))
-    svg = svg.replace(period + 'daytext1', _clean_text(forecastday_obj.day_text)[0])
-    svg = svg.replace(period + 'daytext2', _clean_text(forecastday_obj.day_text)[1])
-    svg = svg.replace(period + 'nighttext1', _clean_text(forecastday_obj.night_text)[0])
-    svg = svg.replace(period + 'nighttext2', _clean_text(forecastday_obj.night_text)[1])
+    daytext = _clean_text(forecastday_obj.day_text)
+    nighttext = _clean_text(forecastday_obj.night_text, 40)
+    svg = svg.replace(period + 'daytext1', daytext[0])
+    svg = svg.replace(period + 'daytext2', daytext[1])
+    svg = svg.replace(period + 'nighttext1', nighttext[0])
+    svg = svg.replace(period + 'nighttext2', nighttext[1])
 
     # High, low, humidity
     svg = svg.replace(period + 'high', str(forecastday_obj.high_F) + 'F')
@@ -78,7 +80,7 @@ def write_forecastday(svg, forecastday_obj):
     svg = svg.replace(period + 'nightrainamount', str(forecastday_obj.qpf_night_in) + '\"')
     return svg
 
-def _clean_text(forecast_text):
+def _clean_text(forecast_text, break_length=65):
     """Cleans forecast text for display in SVG template
 
     The API response contains plain english desciptions of the day's 
@@ -91,6 +93,7 @@ def _clean_text(forecast_text):
 
     Args:
         forecast_text: Long, verbose string of forecast text to clean.
+        break_length: Position to look for whitespace to break the line.
 
     Returns:
         A 2-element array containing cleaned forecast text.
@@ -100,19 +103,17 @@ def _clean_text(forecast_text):
         new_end = forecast_text.find('Low')
     if new_end > -1:
         forecast_text = forecast_text[:new_end - 1]
-    return _wrap_text(forecast_text)
+    return _wrap_text(forecast_text, break_length)
 
-def _wrap_text(forecast_text):
+def _wrap_text(forecast_text, break_length):
     """Splits a long line of text into two lines
 
     Args:
         forecast_text: Long string of forecast text to split into 2 lines.
-
+        break_length: Position to look for whitespace to break the line.
     Returns:
         A 2-element array containing forecast text.
     """
-    # Position to begin looking for whitespace to break the line
-    break_length = 30
     wrapped_text = ['', '']
     if len(forecast_text) <= break_length:
         # Don't wrap short strings
