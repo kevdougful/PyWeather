@@ -23,8 +23,14 @@ https://github.com/mpetroff/kindle-weather-display
 """
 #!/usr/bin/python
 
+import apirequest
 import forecastdata
 import svgmanip
 
-forecast = forecastdata.Forecast('MO/Maryland_Heights')
+forecast = forecastdata.Forecast('38.667426,-90.396479')
 svgmanip.write_forecast(forecast)
+f = open('radar.gif', 'wb')
+params = '?width=800&height=400&newmaps=1&num=15&delay=25&timelabel=1&timelabel.y=10'
+img = apirequest.radar_request('38.667426,-90.396479', request_params=params)
+f.write(img)
+f.close()

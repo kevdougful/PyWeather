@@ -197,3 +197,6 @@ ModelManifest.xml
 
 # ignore svg output
 forecast.svg
+
+# ignore radar output
+radar.gif
