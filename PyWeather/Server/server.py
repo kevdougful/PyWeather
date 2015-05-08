@@ -23,7 +23,6 @@ https://github.com/mpetroff/kindle-weather-display
 """
 #!/usr/bin/python
 
-import getxml
 import forecastdata
 import svgmanip
 

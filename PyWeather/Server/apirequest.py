@@ -33,12 +33,12 @@ def _get_apikey():
     """
     return open('./api.key').read()
 
-def _get_url(request_type, requested_location):
+def _get_url(requested_feature, request_query):
     """Forms an URL using an API key, the type of request, and location desired.
 
     Args:
-        request_type: Type of API request to send (forecast, 10 day forecast).
-        requested_location: Geographical location for which to request.
+        requested_feature: Type of API request to send (forecast, 10 day forecast).
+        request_query: Geographical location for which to request.
             Acceptable forms:
                 <State>/<City> (e.g. MO/St_Louis)
                 <ZIP Code> (e.g. 63167)
@@ -53,15 +53,15 @@ def _get_url(request_type, requested_location):
         HTTP URL for the desired location and type of request.
     """
     url = 'http://api.wunderground.com/api/'
-    url += _get_apikey() + '/' + request_type + '/q/' + requested_location + '.xml'
+    url += _get_apikey() + '/' + requested_feature + '/q/' + request_query + '.xml'
     return url
 
-def xml_request(request_type, requested_location):
+def xml_request(requested_feature, request_query):
     """Sends an HTTP request for the desired location and request type
 
     Args:
-        request_type: Type of API request to send (forecast, 10 day forecast).
-        requested_location: Geographical location for which to request.
+        requested_feature: Type of API request to send (forecast, 10 day forecast).
+        request_query: Geographical location for which to request.
             Acceptable forms:
                 <State>/<City> (e.g. MO/St_Louis)
                 <ZIP Code> (e.g. 63167)
@@ -76,7 +76,7 @@ def xml_request(request_type, requested_location):
         HTTP response as parsed XML.
     """
     # get URL
-    url = _get_url(request_type, requested_location)
+    url = _get_url(requested_feature, request_query)
     # send HTTP request
     req = request.urlopen(url)
     # read response

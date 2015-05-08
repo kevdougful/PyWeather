@@ -51,11 +51,11 @@ class Forecast(object):
     Attributes:
         ForecastDays: list of ForecastDay objects containing the forecast's data.
     """
-    def __init__(self, requested_location):
+    def __init__(self, request_query):
         """Creates a new instance of the Forecast class.
 
         Args:
-            requested_location: Geographical location for which to request.
+            request_query: Geographical location for which to request.
                 Acceptable forms:
                     <State>/<City> (e.g. MO/St_Louis)
                     <ZIP Code> (e.g. 63167)
@@ -69,7 +69,7 @@ class Forecast(object):
         Returns:
             A new instance of the Forecast class.
         """
-        xml = xml_request('forecast', requested_location)
+        xml = xml_request('forecast', request_query)
         txt_forecast = xml.getElementsByTagName('txt_forecast')
         simpleforecast = xml.getElementsByTagName('simpleforecast')
         
