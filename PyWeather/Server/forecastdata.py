@@ -21,7 +21,7 @@ Matthew Petroff's Kindle Weather Display project.
 http://mpetroff.net/2012/09/kindle-weather-display/
 https://github.com/mpetroff/kindle-weather-display
 """
-from getxml import xml_request
+from apirequest import xml_request
 from datetime import datetime
 
 def _getNodeValue(xml_element, tag_name):
