@@ -16,19 +16,50 @@ text {
     height:300px;
 }
 .oddperiod {
-    fill:none;
+    fill:#D4A46A;
 }
 .evenperiod {
-    fill:lightgray;
+    fill:#AA7639;
 }
 .maintitle {
-    font-size:24px;
+    font-size:28px;
+    font-style:oblique;
+    font-weight:normal;
 }
 
-/* main icon */
-.icontitle {
-    text-align:center;
-    text-anchor:middle;
+/* color scheme */
+.highlabel, .high {
+    fill:#441D00;
+}
+.lowlabel, .low {
+    fill:#441D00;
+}
+.humiditylabel, .humidity {
+    fill:#441D00;
+}
+.mainicon {
+    fill:#552E00;
+}
+.nighticon {
+    fill:#032436;
+}
+.oddovernightframe, .evenovernightframe {
+    fill:#28546C;
+    stroke:#032436;
+}
+.dayumbrella {
+    fill:#804F15;
+    stroke:#552E00;
+}
+.nightumbrella {
+    fill:#113B51;
+    stroke:#032436;
+}
+.dayrain {
+    fill:#FFD8AA;
+}
+.nightrain {
+    fill:#8F90A2;
 }
 
 /* day text */
@@ -48,12 +79,14 @@ text {
 }
 
 /* rain info */
+.dayumbrella, .nightumbrella {
+    stroke-width:1px;
+}
 .dayrain, .nightrain {
     font-size:20px;
     font-weight:bold;
     text-anchor:middle;
     text-align:center;
-    fill:white;
 }
 #dayrainicon {
 
@@ -65,9 +98,7 @@ text {
     font-size:14px;
 }
 .oddovernightframe, .evenovernightframe {
-    fill:none;
     stroke-width:2px;
-    stroke:black;
 }
 .oddovernighttitle, .evenovernighttitle {
     font-size:18px;

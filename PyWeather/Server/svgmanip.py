@@ -60,7 +60,7 @@ def write_forecastday(svg, forecastday_obj):
     period = 'period' + period
 
     # Text
-    svg = svg.replace(period + 'title', forecastday_obj.forecast_date.strftime('%a %b-%d'))
+    svg = svg.replace(period + 'title', forecastday_obj.forecast_date.strftime('%a %b %d'))
     daytext = _clean_text(forecastday_obj.day_text)
     nighttext = _clean_text(forecastday_obj.night_text, 40)
     svg = svg.replace(period + 'daytext1', daytext[0])
