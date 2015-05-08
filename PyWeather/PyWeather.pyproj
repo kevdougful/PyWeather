@@ -28,7 +28,7 @@
     <Compile Include="Server\forecastdata.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Server\getxml.py">
+    <Compile Include="Server\apirequest.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Server\server.py" />
