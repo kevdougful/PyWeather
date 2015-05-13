@@ -21,8 +21,12 @@ Matthew Petroff's Kindle Weather Display project.
 http://mpetroff.net/2012/09/kindle-weather-display/
 https://github.com/mpetroff/kindle-weather-display
 """
-
-from urllib import request
+try:
+    # Python 3
+    from urllib import request
+except ImportError:
+    # Python 2
+    from urllib2 import urlopen
 from xml.dom.minidom import parseString
 
 def _get_apikey():
