@@ -23,7 +23,7 @@ https://github.com/mpetroff/kindle-weather-display
 """
 try:
     # Python 3
-    from urllib import request
+    from urllib.request import urlopen
 except ImportError:
     # Python 2
     from urllib2 import urlopen
