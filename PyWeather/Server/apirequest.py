@@ -117,7 +117,7 @@ def radar_request(request_query, animated=True, response_format='gif', request_p
     requested_feature = 'animatedradar' if animated else 'radar'
     url = _get_url(requested_feature, request_query, response_format, request_params)
     # Send HTTP request
-    http_request = request.urlopen(url)
+    http_request = urlopen(url)
     # Read response
     http_response = http_request.read()
     # Return the image
