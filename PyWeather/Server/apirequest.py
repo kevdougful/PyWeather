@@ -85,7 +85,7 @@ def xml_request(requested_feature, request_query):
     # Get URL
     url = _get_url(requested_feature, request_query)
     # Send HTTP request
-    http_request = request.urlopen(url)
+    http_request = urlopen(url)
     # Read response
     http_response = http_request.read()
     # Return parsed XML
