@@ -6,7 +6,7 @@
     <ProjectGuid>c246e216-743e-48a6-b22a-a9c0867b2816</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Server\server.py</StartupFile>
+    <StartupFile>server.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,26 +23,23 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Server\convert.py">
+    <Compile Include="convert.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Server\forecastdata.py">
+    <Compile Include="forecastdata.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Server\apirequest.py">
+    <Compile Include="apirequest.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Server\server.py" />
-    <Compile Include="Server\svgmanip.py">
+    <Compile Include="server.py" />
+    <Compile Include="svgmanip.py">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Server\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Server\default-style.css" />
-    <Content Include="Server\template.svg" />
+    <Content Include="default-style.css" />
+    <Content Include="template.svg" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
